@@ -8,6 +8,7 @@ export default class App extends PureComponent {
     commentList: []
   }
 
+  
   render() {
     return (
       <div className='app'>
