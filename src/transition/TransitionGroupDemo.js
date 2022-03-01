@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
-// import "./TransitionGroup.scss"
+import "./TransitionGroup.scss"
 
 export default class TransitionGroupDemo extends PureComponent {
 
@@ -9,26 +9,28 @@ export default class TransitionGroupDemo extends PureComponent {
     names: ["hello", "word", "tom"]
   }
   render() {
+    const { names } = this.state
     return (
-      <div>
-        {
-          this.state.names.map((item, index) => {
-            return (
+      <>
+        <TransitionGroup >
+          {
+            names.map((item, index) => (
               <CSSTransition
                 key={index}
-                timeout={500}
+                timeout={300}
                 classNames="item"
               >
                 <div>{item}</div>
               </CSSTransition>
-            )
-          })
-        }
+            ))
+          }
+        </TransitionGroup>
         <button onClick={e => this.addName()}>添加name</button>
-      </div>
+      </>
+
     )
   }
-  
+
   addName() {
     this.setState({
       names: [...this.state.names, "jerry"]
